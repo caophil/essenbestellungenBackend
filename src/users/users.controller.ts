@@ -12,18 +12,24 @@ export class UsersController {
     @Post('/signup')
     async addUser(
         @Body('password') userPassword: string,
-        @Body('username') userName: string,
+        @Body('username') username: string,
+        @Body('firstname') firstname: string,
+        @Body('lastname') lastname: string,
+        @Body('personalnummer') personalnummer: number,
     ){
         const saltOrRounds = 10;
         const hashedPassword = await bcrypt.hash(userPassword, saltOrRounds);
         const result = await this.usersService.insertUser(
-            userName,
+            username,
             hashedPassword,
+            firstname,
+            lastname,
+            personalnummer
         );
         return{
             msg: 'User successfully registerd',
             userId: result.id,
-            userName: result.username
+            username: result.username
         };
     }
 
