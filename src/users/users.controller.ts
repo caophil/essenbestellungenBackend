@@ -47,6 +47,12 @@ export class UsersController {
         return req.user;
     }
 
+    @UseGuards()
+    @Get('/test')
+    getTest(@Request() req): string{
+        return "test test test";
+    }
+
     @Get('/logout')
     logout(@Request() req): any {
         req.session.destroy();
