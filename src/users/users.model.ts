@@ -19,6 +19,9 @@ export const UserSchema = new mongoose.Schema(
         },
         personalnummer: {
             type: Number
+        },
+        role: {
+            type: String
         }
 
     },
@@ -32,4 +35,5 @@ export interface User extends mongoose.Document {
     firstname: string;
     lastname: string;
     personalnummer: number;
+    role: string;
 }

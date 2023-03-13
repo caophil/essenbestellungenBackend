@@ -7,14 +7,15 @@ import { User } from './users.model';
 export class UsersService {
     constructor(@InjectModel('user') private readonly userModel: Model<User>){}
     
-    async insertUser(userName: string, password: string, firstname: string, lastname: string, personalnummer: number){
+    async insertUser(userName: string, password: string, firstname: string, lastname: string, personalnummer: number, role: string){
         const username = userName.toLowerCase();
         const newUser = new this.userModel({
             username,
             password,
             firstname,
             lastname,
-            personalnummer
+            personalnummer,
+            role
         })
         await newUser.save();
         return newUser;
