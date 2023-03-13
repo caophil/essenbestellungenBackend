@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
 import { LocalAuthGuard } from 'src/auth/local.auth.guard';
 import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
+import {AdminGuard} from 'src/auth/admin.guard';
 
 @Controller('users')
 export class UsersController {
@@ -16,6 +17,7 @@ export class UsersController {
         @Body('firstname') firstname: string,
         @Body('lastname') lastname: string,
         @Body('personalnummer') personalnummer: number,
+        @Body('role') role: string,
     ){
         const saltOrRounds = 10;
         const hashedPassword = await bcrypt.hash(userPassword, saltOrRounds);
@@ -24,7 +26,8 @@ export class UsersController {
             hashedPassword,
             firstname,
             lastname,
-            personalnummer
+            personalnummer,
+            role
         );
         return{
             msg: 'User successfully registerd',
@@ -47,7 +50,7 @@ export class UsersController {
         return req.user;
     }
 
-    @UseGuards()
+    @UseGuards(AdminGuard)
     @Get('/test')
     getTest(@Request() req): string{
         return "test test test";
