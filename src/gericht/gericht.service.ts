@@ -15,4 +15,26 @@ export class GerichtService {
         return gerichtDoc.save();
     }
 
+    getGerichte():Promise<GerichtDocument[]>{
+        return this.gerichtModel.find().exec();
+    }
+
+    getGericht(id: string):Promise<GerichtDocument>{
+        return this.gerichtModel.findById(id).exec();
+    }
+
+    async updateGericht(id: string, newGericht: Gericht): Promise<GerichtDocument>{
+        const oldGericht = await this.getGericht(id);
+        oldGericht.name = newGericht.name ? newGericht.name : oldGericht.name;
+        oldGericht.preis = newGericht.preis ? newGericht.preis : oldGericht.preis;
+        oldGericht.kategorie = newGericht.kategorie ? newGericht.kategorie : oldGericht.kategorie;
+        return oldGericht.save();
+
+    }
+
+    deleteGericht(id: string){
+        return this.gerichtModel.deleteOne({
+            _id: id
+        });
+    }
 }

@@ -6,6 +6,7 @@ import {AdminGuard} from 'src/auth/admin.guard';
 
 
 
+
 @Controller('gericht')
 export class GerichtController {
 
@@ -15,9 +16,33 @@ export class GerichtController {
     @Post()
     createGericht(@Body() gericht: Gericht): Promise<GerichtDocument>{
         return this.gerichtService.createGericht(gericht);
-    
+    }
+
+
+    @UseGuards(AuthenticatedGuard)
+    @Get()
+    getGerichte():Promise<GerichtDocument[]>{
+        return this.gerichtService.getGerichte();
+    }
+
+    @UseGuards(AuthenticatedGuard)
+    @Get(':id')
+    getGericht(@Param('id')id: string):Promise<GerichtDocument>{
+        return this.gerichtService.getGericht(id);
     }
     
+    @UseGuards(AdminGuard)
+    @Put(':id')
+    updateGericht(@Param('id')id: string, @Body()newGericht: Gericht):Promise<GerichtDocument>{
+        return this.gerichtService.updateGericht(id,newGericht);
+    }
+
+    @UseGuards(AdminGuard)
+    @Delete(':id')
+    deleteGericht(@Param('id')id: string){
+        return this.gerichtService.deleteGericht(id);
+    }
+
 
 
 }
