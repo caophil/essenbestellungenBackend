@@ -4,7 +4,14 @@ import * as session from "express-session"
 import * as passport from "passport"
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule/*, { cors: true }*/);
+  const cors = require('cors')
+
+const corsOptions = {
+    origin: 'http://localhost:4200',
+    credentials: true,
+}
+app.use(cors(corsOptions));
 
 app.use(
   session({

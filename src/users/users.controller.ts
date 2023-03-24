@@ -5,6 +5,8 @@ import { LocalAuthGuard } from 'src/auth/local.auth.guard';
 import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
 import {AdminGuard} from 'src/auth/admin.guard';
 
+
+
 @Controller('users')
 export class UsersController {
 
@@ -46,14 +48,15 @@ export class UsersController {
 
     @UseGuards(AuthenticatedGuard)
     @Get('/protected')
-    getHello(@Request() req): string{
-        return req.user;
+    getHello(@Request() req): any{
+        return {msg: "protected"};
+        //return req.user;
     }
 
-    @UseGuards(AdminGuard)
+    
     @Get('/test')
-    getTest(@Request() req): string{
-        return "test test test";
+    getTest(@Request() req): any{
+        return {msg: "das ist ein test"};
     }
 
     @Get('/logout')
