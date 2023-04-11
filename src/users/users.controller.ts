@@ -16,6 +16,7 @@ export class UsersController {
     async addUser(
         @Body('password') userPassword: string,
         @Body('username') username: string,
+        @Body('email') email: string,
         @Body('firstname') firstname: string,
         @Body('lastname') lastname: string,
         @Body('personalnummer') personalnummer: number,
@@ -25,6 +26,7 @@ export class UsersController {
         const hashedPassword = await bcrypt.hash(userPassword, saltOrRounds);
         const result = await this.usersService.insertUser(
             username,
+            email,
             hashedPassword,
             firstname,
             lastname,
