@@ -16,7 +16,8 @@ export class UsersService {
             firstname,
             lastname,
             personalnummer,
-            role
+            role,
+            email,
         })
         await newUser.save();
         return newUser;

@@ -21,6 +21,7 @@ export class UsersController {
         @Body('lastname') lastname: string,
         @Body('personalnummer') personalnummer: number,
         @Body('role') role: string,
+        @Body('email') email: string,
     ){
         const saltOrRounds = 10;
         const hashedPassword = await bcrypt.hash(userPassword, saltOrRounds);
@@ -31,7 +32,8 @@ export class UsersController {
             firstname,
             lastname,
             personalnummer,
-            role
+            role,
+            email,
         );
         return{
             msg: 'User successfully registerd',
