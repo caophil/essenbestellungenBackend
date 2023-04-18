@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { GerichtModule } from './gericht/gericht.module';
 import { DayModule } from './day/day.module';
+import { BestellungModule } from './bestellung/bestellung.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { DayModule } from './day/day.module';
     UsersModule,
     AuthModule,
     GerichtModule,
-    DayModule
+    DayModule,
+    BestellungModule
   ],
   controllers: [AppController],
   providers: [AppService],
