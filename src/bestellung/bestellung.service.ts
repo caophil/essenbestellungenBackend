@@ -13,5 +13,14 @@ export class BestellungService {
         return bestellungDoc.save();
     }
 
+    getBestellungen():Promise<BestellungDocument[]>{
+        return this.bestellungModel.find().exec();
+    }
+
+    deleteBestellung(id: string){
+        return this.bestellungModel.deleteOne({
+            _id: id
+        })
+    }
 
 }

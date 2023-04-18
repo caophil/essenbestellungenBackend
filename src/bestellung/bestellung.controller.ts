@@ -15,6 +15,16 @@ export class BestellungController {
         return this.bestellungService.createBestellung(bestellung);
     }
 
+    @UseGuards(AuthenticatedGuard)
+    @Get()
+    getBestellungen():Promise<BestellungDocument[]>{
+        return this.bestellungService.getBestellungen();
+    }
 
+    @UseGuards(AuthenticatedGuard)
+    @Delete(':id')
+    deleteBestellung(@Param('id')id: string){
+        return this.bestellungService.deleteBestellung(id);
+    }
 
 }
