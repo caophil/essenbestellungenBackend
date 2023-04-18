@@ -17,6 +17,12 @@ export class BestellungService {
         return this.bestellungModel.find().exec();
     }
 
+    getMyBestellungen(username: string):Promise<BestellungDocument[]>{
+        return this.bestellungModel.find({
+            username: username
+        }).exec()
+    }
+
     deleteBestellung(id: string){
         return this.bestellungModel.deleteOne({
             _id: id
