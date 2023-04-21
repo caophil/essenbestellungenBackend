@@ -4,11 +4,17 @@ import {MyGuard} from 'src/auth/my.guard';
 import { Controller, Post, Body, Get, Param, Put, Delete, UseGuards} from '@nestjs/common';
 import {BestellungService} from './bestellung.service';
 import {BestellungDocument, Bestellung} from './bestellung.model';
+import {Overview} from './overview';
 
 @Controller('bestellung')
 export class BestellungController {
 
     constructor(private bestellungService: BestellungService){}
+
+    @Get('/overview')
+    getOverview(){
+        return this.bestellungService.getOverviews();
+    }
 
     @UseGuards(AuthenticatedGuard)
     @Post()
@@ -33,5 +39,7 @@ export class BestellungController {
     deleteBestellung(@Param('id')id: string){
         return this.bestellungService.deleteBestellung(id);
     }
+
+    
 
 }
