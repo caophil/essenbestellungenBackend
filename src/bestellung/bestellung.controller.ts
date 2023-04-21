@@ -10,7 +10,7 @@ import {Overview} from './overview';
 export class BestellungController {
 
     constructor(private bestellungService: BestellungService){}
-
+    @UseGuards(AdminGuard)
     @Get('/overview')
     getOverview(){
         return this.bestellungService.getOverviews();
