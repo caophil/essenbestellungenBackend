@@ -1,6 +1,6 @@
-import {AdminGuard} from 'src/auth/admin.guard';
-import {AuthenticatedGuard} from "src/auth/authenticated.guard";
-import {MyGuard} from 'src/auth/my.guard';
+import {AdminGuard} from '../auth/admin.guard';
+import {AuthenticatedGuard} from "../auth/authenticated.guard";
+import {MyGuard} from '../auth/my.guard';
 import { Controller, Post, Body, Get, Param, Put, Delete, UseGuards} from '@nestjs/common';
 import {BestellungService} from './bestellung.service';
 import {BestellungDocument, Bestellung} from './bestellung.model';

@@ -1,6 +1,6 @@
 import {Schema, Prop, SchemaFactory} from '@nestjs/mongoose';
 import {Document} from 'mongoose';
-import {Gericht} from 'src/gericht/gericht';
+import {Gericht} from '../gericht/gericht';
 
 export type DayDocument = Document & Day;
 
