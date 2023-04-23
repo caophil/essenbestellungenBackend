@@ -7,8 +7,8 @@ export type GerichtDocument = Document & Gericht;
 export class Gericht{
 
     @Prop()
-    name: string;
-    @Prop()
+  name: string;
+  @Prop()
     preis: number;
     @Prop()
     kategorie: Kategorie
