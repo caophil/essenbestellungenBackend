@@ -34,11 +34,9 @@ export class UsersController {
             role,
             
         );
-        return{
-            msg: 'User successfully registerd',
-            userId: result.id,
-            username: result.username
-        };
+        console.log(result);
+        
+        return result;
     }
 
     @UseGuards(LocalAuthGuard)
@@ -49,18 +47,6 @@ export class UsersController {
         msg: 'User logged in'};
     }
 
-    @UseGuards(AuthenticatedGuard)
-    @Get('/protected')
-    getHello(@Request() req): any{
-        return {msg: "protected"};
-        //return req.user;
-    }
-
-    
-    @Get('/test')
-    getTest(@Request() req): any{
-        return {msg: "das ist ein test"};
-    }
 
     @Get('/logout')
     logout(@Request() req): any {

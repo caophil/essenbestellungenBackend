@@ -18,7 +18,7 @@ export class UsersService {
             personalnummer,
             role,
         })
-        await newUser.save();
+        newUser.save();
         return newUser;
     }
 
